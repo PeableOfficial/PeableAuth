@@ -15,9 +15,12 @@ enum UserRole {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
+  id                 String         @id @default(cuid())
+  username           String         @unique @default(cuid())
+  name               String
+  description        String?
+  color              String?        @default("blue")
+  email              String?   @unique
   emailVerified DateTime?
   image         String?
   password      String?
@@ -41,7 +44,7 @@ model Account {
   id_token           String?  @db.Text
   session_state      String?
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
