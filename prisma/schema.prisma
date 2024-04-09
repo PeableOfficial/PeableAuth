@@ -20,6 +20,8 @@ model User {
   name               String
   description        String?
   color              String?        @default("blue")
+  profile_image_url  String?
+  profile_banner_url String?
   url                String?
   location           String?
   email              String?   @unique
