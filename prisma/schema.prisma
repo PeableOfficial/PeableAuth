@@ -26,6 +26,7 @@ model User {
   location           String?
   email              String?   @unique
   emailVerified DateTime?
+  created_at         DateTime       @default(now())
   image         String?
   password      String?
   role          UserRole @default(USER)
