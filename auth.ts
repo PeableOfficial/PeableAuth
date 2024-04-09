@@ -66,10 +66,10 @@ export const {
 
       if (session.user) {
         session.user.name = token.name;
-        session.user.email = token.email;
+        session.user.email = token.email as string;
         session.user.isOAuth = token.isOAuth as boolean;
         session.user.username = token?.username;
-        session.user.image = token?.image;
+        session.user.image = token?.image as string;
       }
 
       return session;
