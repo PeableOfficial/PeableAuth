@@ -20,6 +20,7 @@ model User {
   name               String
   description        String?
   color              String?        @default("blue")
+  url                String?
   location           String?
   email              String?   @unique
   emailVerified DateTime?
