@@ -10,7 +10,7 @@ import {
 
 const { auth } = NextAuth(authConfig);
 
-export default auth((req: { auth?: any; nextUrl?: any }) => {
+export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
 
@@ -19,17 +19,17 @@ export default auth((req: { auth?: any; nextUrl?: any }) => {
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
   if (isApiAuthRoute) {
-    return new Response();
+    return;
   }
 
   if (isAuthRoute) {
     if (isLoggedIn) {
       return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
     }
-    return new Response();
+    return;
   }
 
-  return new Response();
+  return;
 });
 
 // Optionally, don't invoke Middleware on some paths
