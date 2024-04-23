@@ -5,10 +5,10 @@ import { NextResponse } from "next/server";
 
 type ResponseData = any;
 
-export async function GET(
+export const GET = async (
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
-) {
+) => {
   // If you don't have NEXTAUTH_SECRET set, you will have to pass your secret as `secret` to `getToken`
   const token = await getToken({
     req,
@@ -22,4 +22,4 @@ export async function GET(
     // Not Signed in
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });
   }
-}
+};
