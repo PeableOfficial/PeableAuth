@@ -69,7 +69,7 @@ export const {
         session.user.name = token.name;
         session.user.email = token.email as string;
         session.user.isOAuth = token.isOAuth as boolean;
-        session.user.username = token?.username;
+        session.user.username = token?.username as string;
         session.user.image = token?.image as string;
         session.user.verified = token.verified as boolean;
       }
