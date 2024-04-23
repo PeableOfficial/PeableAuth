@@ -7,8 +7,9 @@ type ResponseData = any;
 export async function GET(request: Request) {
   // If you don't have NEXTAUTH_SECRET set, you will have to pass your secret as `secret` to `getToken`
   const token = await getToken({
-    request,
+    req: request,
     secret: process.env.NEXTAUTH_SECRET,
+    salt: "",
   });
 
   if (token) {
