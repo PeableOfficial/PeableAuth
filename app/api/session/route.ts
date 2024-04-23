@@ -8,7 +8,8 @@ export async function GET(request: Request) {
   // If you don't have NEXTAUTH_SECRET set, you will have to pass your secret as `secret` to `getToken`
   const token = await getToken({
     req: request,
-    secret: process.env.NEXTAUTH_SECRET,
+    secret:
+      "5ddf43636af10bb58ae3b1e2f21d4b909bb5b613e91b1b4a891ba3342c95b266f5bbf18b6751a79ec13111ce15a63bbc3a33f1c38cd9071f45ac5db2ab81b1bf",
     salt: "",
   });
 
