@@ -42,17 +42,25 @@ export async function GET(
 }
 
 export async function PUT(request: Request) {
-  const { user_id, username, name, description, location, url } =
-    (await request.json()) as {
-      user_id: string;
-      username: string;
-      name: string;
-      description: string;
-      location: string;
-      url: string;
-      profile_banner_url: string;
-      profile_image_url: string;
-    };
+  const {
+    user_id,
+    username,
+    name,
+    description,
+    location,
+    url,
+    profile_banner_url,
+    profile_image_url,
+  } = (await request.json()) as {
+    user_id: string;
+    username: string;
+    name: string;
+    description: string;
+    location: string;
+    url: string;
+    profile_banner_url: string;
+    profile_image_url: string;
+  };
 
   const userSchema = z
     .object({
