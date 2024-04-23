@@ -4,14 +4,10 @@ import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 
 type ResponseData = any;
-
-export const GET = async (
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) => {
+export async function GET(request: Request) {
   // If you don't have NEXTAUTH_SECRET set, you will have to pass your secret as `secret` to `getToken`
   const token = await getToken({
-    req,
+    request,
     secret: process.env.NEXTAUTH_SECRET,
   });
 
@@ -22,4 +18,4 @@ export const GET = async (
     // Not Signed in
     return NextResponse.json({ error: "Not signed in" }, { status: 401 });
   }
-};
+}
