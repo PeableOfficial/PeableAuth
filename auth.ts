@@ -26,6 +26,7 @@ export const {
       });
     },
   },
+  secret: process.env.NEXTAUTH_SECRET as string,
   callbacks: {
     async signIn({ user, account }) {
       // Allow OAuth without email verification
@@ -70,6 +71,7 @@ export const {
         session.user.isOAuth = token.isOAuth as boolean;
         session.user.username = token?.username;
         session.user.image = token?.image as string;
+        session.user.verified = token.verified as boolean;
       }
 
       return session;
@@ -90,6 +92,7 @@ export const {
       token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
       token.username = existingUser.username;
       token.image = existingUser.image;
+      token.verified = existingUser.verified;
 
       return token;
     },
