@@ -9,7 +9,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "http://mention.earth",
+            value: "https://mention.earth",
           },
           {
             key: "Access-Control-Allow-Methods",
