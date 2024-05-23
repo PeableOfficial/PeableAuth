@@ -1,4 +1,4 @@
-# Peable Auth
+# Oxy Auth
 
 Key Features:
 
@@ -42,7 +42,7 @@ Key Features:
 ### Cloning the repository
 
 ```shell
-git clone https://github.com/PeableOfficial/PeableAuth.git
+git clone https://github.com/OxyOfficial/OxyAuth.git
 ```
 
 ### Install packages
@@ -97,14 +97,14 @@ We welcome contributions from the community! If you have an idea for a new featu
 
 ## 👨‍💻 Contributors
 
-<a href="https://github.com/PeableOfficial/PeableAuth/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=PeableOfficial/PeableAuth" />   
+<a href="https://github.com/OxyOfficial/OxyAuth/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=OxyOfficial/OxyAuth" />   
 </a>
 
 ## 🖊 TO DO
 
-> You can find TODOs from: [TODO.md](https://github.com/PeableOfficial/PeableAuth/blob/master/TODO.md)
+> You can find TODOs from: [TODO.md](https://github.com/OxyOfficial/OxyAuth/blob/master/TODO.md)
 
 ## 💬 Support
 
-If you have any questions or need support, please reach out to us at support@peable.co 📧.
+If you have any questions or need support, please reach out to us at <support@oxy.so> 📧.
