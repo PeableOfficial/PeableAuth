@@ -6,21 +6,17 @@ import { prisma } from "@/lib/prisma";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get("id") || undefined;
+  const ids = searchParams.get("ids")?.split(",") || undefined;
   const limit = searchParams.get("limit") || undefined;
   const idSchema = z.string().cuid().optional();
-
-  const zod = idSchema.safeParse(id);
-
-  if (!zod.success) {
-    return NextResponse.json(zod.error, { status: 400 });
-  }
 
   try {
     const users = await prisma.user.findMany({
       where: {
         NOT: {
-          id,
+          id: id,
         },
+        id: ids ? { in: ids } : undefined,
       },
 
       orderBy: {
