@@ -98,7 +98,7 @@ We welcome contributions from the community! If you have an idea for a new featu
 ## 👨‍💻 Contributors
 
 <a href="https://github.com/OxyOfficial/OxyAuth/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=OxyOfficial/OxyAuth" />   
+  <img src="https://contrib.rocks/image?repo=OxyOfficial/OxyAuth" />
 </a>
 
 ## 🖊 TO DO

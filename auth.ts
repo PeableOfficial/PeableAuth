@@ -29,6 +29,8 @@ export const {
   secret: process.env.NEXTAUTH_SECRET as string,
   callbacks: {
     async signIn({ user, account }) {
+      delete user.image;
+
       // Allow OAuth without email verification
       if (account?.provider !== "credentials") return true;
 
@@ -70,7 +72,6 @@ export const {
         session.user.email = token.email as string;
         session.user.isOAuth = token.isOAuth as boolean;
         session.user.username = token?.username as string;
-        session.user.image = token?.image as string;
         session.user.verified = token.verified as boolean;
       }
 
@@ -91,13 +92,17 @@ export const {
       token.role = existingUser.role;
       token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
       token.username = existingUser.username;
-      token.image = existingUser.image;
+      token.avatar = existingUser.avatar;
       token.verified = existingUser.verified;
 
       return token;
     },
   },
   adapter: PrismaAdapter(db),
-  session: { strategy: "jwt" },
+  session: {
+    strategy: "database",
+    maxAge: 30 * 24 * 60 * 60, // 30 days to session expiry
+    updateAge: 24 * 60 * 60, // 24 hours to update session data into database
+  },
   ...authConfig,
 });

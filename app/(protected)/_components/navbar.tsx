@@ -4,48 +4,44 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { UserButton } from "@/components/auth/user-button";
 
 export const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-secondary flex justify-between items-center p-4 rounded-xl w-[600px] shadow-sm">
-      <div className="flex gap-x-2">
-        <Button 
-          asChild
-          variant={pathname === "/server" ? "default" : "outline"}
-        >
-          <Link href="/server">
-            Server
-          </Link>
-        </Button>
-        <Button 
-          asChild
-          variant={pathname === "/client" ? "default" : "outline"}
-        >
-          <Link href="/client">
-            Client
-          </Link>
-        </Button>
-        <Button 
-          asChild
-          variant={pathname === "/admin" ? "default" : "outline"}
-        >
-          <Link href="/admin">
-            Admin
-          </Link>
-        </Button>
-        <Button 
-          asChild
-          variant={pathname === "/settings" ? "default" : "outline"}
-        >
-          <Link href="/settings">
-            Settings
-          </Link>
-        </Button>
+    <nav className="w-full p-2 items-center">
+      <div className="m-auto w-fit flex justify-between flex gap-x-2 bg-secondary p-2 rounded-full ">
+        <div className="flex gap-x-2">
+          <Button
+            className="rounded-full"
+            asChild
+            variant={pathname === "/server" ? "default" : "outline"}
+          >
+            <Link href="/server">Server</Link>
+          </Button>
+          <Button
+            className="rounded-full"
+            asChild
+            variant={pathname === "/client" ? "default" : "outline"}
+          >
+            <Link href="/client">Client</Link>
+          </Button>
+          <Button
+            className="rounded-full"
+            asChild
+            variant={pathname === "/admin" ? "default" : "outline"}
+          >
+            <Link href="/admin">Admin</Link>
+          </Button>
+          <Button
+            className="rounded-full"
+            asChild
+            variant={pathname === "/settings" ? "default" : "outline"}
+          >
+            <Link href="/settings">Settings</Link>
+          </Button>
+        </div>
       </div>
-      <UserButton />
     </nav>
   );
 };

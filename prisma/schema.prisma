@@ -12,18 +12,18 @@ generator client {
 enum UserRole {
   ADMIN
   USER
+  MODERATOR
 }
 
 model Session {
   id           String   @id @default(cuid())
+  sessionToken String   @unique
   userId       String
   expires      DateTime
-  sessionToken String   @unique
-  accessToken  String   @unique
   createdAt    DateTime @default(now())
   updatedAt    DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clientKey    String   @unique @default(cuid())
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
@@ -33,20 +33,20 @@ model User {
   verified              Boolean                @default(false)
   description           String?
   color                 String?                @default("blue")
-  profile_image_url     String?
-  profile_banner_url    String?
+  avatar                String?
+  image                 String?
   url                   String?
   location              String?
   email                 String?                @unique
   emailVerified         DateTime?
   created_at            DateTime               @default(now())
-  image                 String?
   password              String?
   role                  UserRole               @default(USER)
   accounts              Account[]
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
   sessions              Session[]
+  subscriptions         Subscription[]
 }
 
 model Account {
@@ -102,4 +102,22 @@ model TwoFactorConfirmation {
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId])
+}
+
+model Subscription {
+  id                 String           @id @default(cuid())
+  userId             String
+  subscriptionPlanId Int
+  startDate          DateTime         @default(now())
+  endDate            DateTime?
+  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subscriptionPlan   SubscriptionPlan @relation(fields: [subscriptionPlanId], references: [id])
+}
+
+model SubscriptionPlan {
+  id            Int            @id @default(autoincrement())
+  name          String
+  description   String
+  price         Float
+  subscriptions Subscription[]
 }
