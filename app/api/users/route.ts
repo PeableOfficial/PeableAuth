@@ -28,6 +28,7 @@ export async function GET(request: Request) {
         name: true,
         username: true,
         email: true,
+        avatar: true,
       },
 
       take: limit ? parseInt(limit) : undefined,
