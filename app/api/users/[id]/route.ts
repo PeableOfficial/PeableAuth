@@ -59,8 +59,6 @@ export async function PUT(request: Request) {
       username: z.string().min(1).max(30),
       name: z.string().min(1).max(50),
       description: z.string().max(160),
-      location: z.string().max(30),
-      url: z.string(),
       avatar: z.string(),
     })
     .strict();
@@ -70,8 +68,6 @@ export async function PUT(request: Request) {
     username,
     name,
     description,
-    location,
-    url,
     avatar,
   });
 
@@ -87,9 +83,6 @@ export async function PUT(request: Request) {
       data: {
         name,
         username,
-        description,
-        location,
-        url,
         avatar,
       },
     });
