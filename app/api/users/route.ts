@@ -29,6 +29,8 @@ export async function GET(request: Request) {
         username: true,
         email: true,
         avatar: true,
+        description: true,
+        color: true,
       },
 
       take: limit ? parseInt(limit) : undefined,

@@ -10,7 +10,7 @@ export const Navbar = () => {
 
   return (
     <nav className="w-full p-2 items-center">
-      <div className="m-auto w-fit flex justify-between flex gap-x-2 bg-secondary p-2 rounded-full ">
+      <div className="m-auto w-fit flex justify-between gap-x-2 bg-secondary p-2 rounded-full ">
         <div className="flex gap-x-2">
           <Button
             className="rounded-full"

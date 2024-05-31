@@ -33,6 +33,8 @@ export async function GET(
         email: true,
         image: true,
         avatar: true,
+        description: true,
+        color: true,
       },
     });
 
@@ -43,15 +45,16 @@ export async function GET(
 }
 
 export async function PUT(request: Request) {
-  const { user_id, username, name, description, location, url, avatar } =
+  const { user_id, username, name, location, url, avatar, description, color } =
     (await request.json()) as {
       user_id: string;
       username: string;
       name: string;
-      description: string;
       location: string;
       url: string;
       avatar: string;
+      description: string;
+      color: string;
     };
 
   const userSchema = z
@@ -59,8 +62,9 @@ export async function PUT(request: Request) {
       user_id: z.string().cuid(),
       username: z.string().min(1).max(30),
       name: z.string().min(1).max(50),
-      description: z.string().max(160),
       avatar: z.string(),
+      description: z.string().max(160),
+      color: z.string(),
     })
     .strict();
 
@@ -68,8 +72,9 @@ export async function PUT(request: Request) {
     user_id,
     username,
     name,
-    description,
     avatar,
+    description,
+    color,
   });
 
   if (!zod.success) {
@@ -85,6 +90,8 @@ export async function PUT(request: Request) {
         name,
         username,
         avatar,
+        description,
+        color,
       },
     });
 
